@@ -1,5 +1,6 @@
 import { configure } from '@storybook/react';
 import requireContext from 'require-context.macro';
+import 'antd/dist/antd.less';
 
 import '../src/index.css';
 

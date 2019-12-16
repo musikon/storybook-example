@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
-import ButtonLocal from '../components/ButtonLocal';
+import { DatePicker } from 'antd';
 
 export const text = 'Button';
 
@@ -11,4 +10,4 @@ export const actions = {
 };
 
 storiesOf('Buttons Local', module)
-	.add('default', () => <ButtonLocal text={text} {...actions} />)
+	.add('datepicker', () => <DatePicker />);
