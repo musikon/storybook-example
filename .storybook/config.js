@@ -2,6 +2,7 @@ import React from 'react'
 import { configure, addDecorator } from '@storybook/react';
 import requireContext from 'require-context.macro';
 import { addReadme } from 'storybook-readme';
+import { withInfo } from '@storybook/addon-info';
 import 'antd/dist/antd.less';
 
 const styles = {

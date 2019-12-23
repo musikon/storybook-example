@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf  } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Button } from 'antd';
+import { Button as ButtunAnt } from 'antd';
+import Button from '../components/ButtonLocal'
 import readme from '../components/README.md'
+import { linkTo } from '@storybook/addon-links'
 
 export const text = 'Button';
 
@@ -11,18 +13,40 @@ export const actions = {
 };
 
 storiesOf('Buttons', module)
-	.addParameters({
+	.add('primary', () => <ButtunAnt {...actions} type="primary">primary</ButtunAnt>, {
 		readme: {
-			// override docs
 			content: readme,
 			sidebar: readme,
 		},
 	})
-	.add('primary', () => (
-		<div>
-			<Button type="primary">primary</Button>
-		</div>))
-	.add('default', () => <Button {...actions}>default</Button>)
-	.add('dashed', () => <Button {...actions} type="dashed">dashed</Button>)
-	.add('danger', () => <Button {...actions} type="danger">danger</Button>)
-	.add('link', () => <Button {...actions} type="link">link</Button>);
+	.add('Local button', () => <Button {...actions} text="Local button" />, {
+		readme: {
+			content: readme,
+			sidebar: readme,
+		},
+	})
+	.add('dashed', () => <ButtunAnt {...actions} type="dashed">dashed</ButtunAnt>, {
+		readme: {
+			content: readme,
+			sidebar: readme,
+		},
+	})
+	.add('danger', () => <ButtunAnt {...actions} type="danger">danger</ButtunAnt>, {
+		readme: {
+			content: readme,
+			sidebar: readme,
+		},
+	})
+	.add('link', () => (
+		<ButtunAnt
+			onClick={linkTo('Buttons Example', 'danger')}
+			type="link"
+		>
+			link
+		</ButtunAnt>
+	), {
+		readme: {
+			content: readme,
+			sidebar: readme,
+		},
+	});
