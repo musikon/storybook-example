@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import withFormik from 'storybook-formik';
+import {Input, Checkbox, Select} from 'antd'
 import {
 	PersonalInfoSubForm,
 	personalInfoInitialValues,
@@ -9,10 +10,8 @@ import {
 	professionalInfoInitialValues,
 	professionalInfoValidationSchema,
 	SignupForm,
-	MyCheckbox,
-	MySelect,
-	MyTextInput,
-	FeedbackSubform, feedbackInitialValues
+	FeedbackSubform,
+	feedbackInitialValues
 } from '../components/FormComponent';
 
 const personalInfoParams = {
@@ -68,7 +67,7 @@ storiesOf('Example/subforms', module)
 // You may want to demonstrate a library of your custom-made fields
 storiesOf('Example/MyFields', module)
 	.addDecorator(withFormik)
-	.add('MyCheckbox', () => (<MyCheckbox name="likeFormik">Do you like formik?</MyCheckbox>), {
+	.add('MyCheckbox', () => (<Checkbox name="likeFormik">Do you like formik?</Checkbox>), {
 		formik: {
 			initialValues: {
 				likeFormik: true,
@@ -76,11 +75,11 @@ storiesOf('Example/MyFields', module)
 		}
 	})
 	.add('MySelect', () => (
-		<MySelect name="formikRating" label="How much do you like formik?" >
+		<Select name="formikRating" label="How much do you like formik?" >
 			<option value="3">I like it</option>
 			<option value="4">I really like it</option>
 			<option value="5">I absolutely love it</option>
-		</MySelect>
+		</Select>
 	), {
 		formik: {
 			initialValues: {
@@ -89,7 +88,7 @@ storiesOf('Example/MyFields', module)
 		}
 	})
 	.add('MyTextInput', () => (
-		<MyTextInput name="formikTweet" label="Describe formik in 80 characters" placeholder="I love formik because..." />
+		<Input name="formikTweet" label="Describe formik in 80 characters" placeholder="I love formik because..." />
 	), {
 		formik: {
 			initialValues: {
