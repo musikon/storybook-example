@@ -1,13 +1,23 @@
 import React from 'react';
-import {addDecorator, storiesOf} from '@storybook/react';
+import { storiesOf} from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Button as ButtunAnt } from 'antd';
 import Button from '../components/ButtonLocal'
 import { withInfo } from '@storybook/addon-info';
 import { linkTo } from '@storybook/addon-links'
-import { withKnobs, object } from '@storybook/addon-knobs/react';
+import { withKnobs, object, text, select } from '@storybook/addon-knobs/react';
 
-export const text = 'Button';
+const optionsLinkDerictory = {
+	['Buttons Example']: 'Buttons Example',
+	Buttons: 'Buttons',
+};
+
+const optionsTypeButton = {
+	dashed: 'dashed',
+	primary: 'primary',
+	danger: 'danger',
+	link: 'link',
+};
 
 export const actions = {
 	onClick: action('onClick'),
@@ -22,10 +32,10 @@ storiesOf('Buttons Example', module)
 	.add('primary', () => (
 		<ButtunAnt
 			{...actions}
-			type={object('type', 'primary')}
-			onClick={linkTo(object('Story', 'Buttons Example'), object('Target', 'dashed'))}
+			type={select('type', optionsTypeButton, 'primary')}
+			onClick={linkTo(select('Story', optionsLinkDerictory, 'Buttons Example'), select('Target', optionsTypeButton, 'dashed'))}
 		>
-			{object('text', 'primary')}
+			{text('text', 'primary')}
 		</ButtunAnt>
 	))
 	.add('Local button', () => <Button {...actions} text={object('task', 'Local button')} />)
